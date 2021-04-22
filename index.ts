@@ -1,2 +1,2 @@
 import App from './source/app';
-App.main();
+(async() => App.main())();
