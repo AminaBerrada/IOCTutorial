@@ -17,19 +17,19 @@ export class ProvidedstringProcessor implements IProcessor
         this._pipeline = pipeline;
     }
 
-    public fetchRecords(): boolean 
+    public async fetchRecords(): Promise<boolean> 
     {
         this._stringRecord = new Record(Status.Pending, "Woof Woof");
         return true;
     }
 
-    public configurePipeline(): boolean
+    public async configurePipeline(): Promise<boolean>
     {
         var success = false;
 
         try 
         {
-            success = this._pipeline.initialize(new Configs());
+            success = await this._pipeline.initialize(new Configs());
             if  (!success)
                 throw new Error("Failed to intialize");
         } catch (err: any)
@@ -40,13 +40,13 @@ export class ProvidedstringProcessor implements IProcessor
         return success;
     }
 
-    public runPipeline(): boolean 
+    public async runPipeline(): Promise<boolean> 
     {
         var success = false;
 
         try 
         {
-            success = this._pipeline.process(this._stringRecord);
+            success = await this._pipeline.process(this._stringRecord);
             if  (!success)
                 throw new Error("Failed to intialize");
         } catch (err: any)
@@ -58,7 +58,7 @@ export class ProvidedstringProcessor implements IProcessor
         
     }
 
-    public finalize(): boolean 
+    public async finalize(): Promise<boolean> 
     {
         return true;
     }

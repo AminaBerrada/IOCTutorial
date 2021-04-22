@@ -6,14 +6,14 @@ import { IPipeline } from "../abstractions/IPipeline";
 @injectable()
 export class Test implements IPipeline
 {
-    initialize(configs: Configs): boolean {
+    async initialize(configs: Configs): Promise<boolean> {
         return true;
     }
-    process(record: Record): boolean {
+    async process(record: Record): Promise<boolean> {
         console.log(record.data);
         return true;
     }
-    finalize(): boolean {
+    async finalize(): Promise<boolean> {
         return true;
     }
     

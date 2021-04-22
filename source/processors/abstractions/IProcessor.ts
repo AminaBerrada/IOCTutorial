@@ -1,7 +1,7 @@
 export interface IProcessor
 {
-    fetchRecords(): boolean;
-    configurePipeline(): boolean;
-    runPipeline(): boolean;
-    finalize(): boolean;
+    fetchRecords(): Promise<boolean>;
+    configurePipeline(): Promise<boolean>;
+    runPipeline(): Promise<boolean>;
+    finalize(): Promise<boolean>;
 }
