@@ -9,7 +9,7 @@ import { Status } from "../../enums/status";
 @injectable()
 export class ProvidedstringProcessor implements IProcessor
 {
-    private _stringRecord: Record;
+    private _record: Record;
     private _pipeline: IPipeline;
 
     constructor(@inject(TYPES.IPipeline) pipeline: IPipeline)
@@ -19,7 +19,7 @@ export class ProvidedstringProcessor implements IProcessor
 
     public async fetchRecords(): Promise<boolean> 
     {
-        this._stringRecord = new Record(Status.Pending, "Woof Woof");
+        this._record = new Record(Status.Pending, "Woof Woof");
         return true;
     }
 
@@ -43,17 +43,15 @@ export class ProvidedstringProcessor implements IProcessor
     public async runPipeline(): Promise<boolean> 
     {
         var success = false;
-
         try 
         {
-            success = await this._pipeline.process(this._stringRecord);
-            if  (!success)
-                throw new Error("Failed to intialize");
+            success = await this._pipeline.process(this._record);
+            if (!success)
+                throw new Error("Failed to process");
         } catch (err: any)
         {
             console.error(err.message);
         }
-
         return success;
         
     }
