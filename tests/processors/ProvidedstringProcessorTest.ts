@@ -49,7 +49,6 @@ describe("Tests for ProvidedstringProcessor class", () => {
 
         expect(success, 'Expected true, was false').to.be.true;
     }); 
-
         
     it("finalize should return true", async() => {
 
@@ -60,8 +59,6 @@ describe("Tests for ProvidedstringProcessor class", () => {
 
         expect(success, 'Expected true, was false').to.be.true;
     }); 
-
-
 
     it("runPipeline should return true", async() => {
 
